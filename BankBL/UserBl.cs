@@ -16,6 +16,7 @@ namespace BankBL
         {
             if (validation.UserRegisterValid(user))
             {
+                user.Password = HashData.Hashed_Password(user.Password);
                 db.Users.Add(user);
                 db.SaveChanges();
             }
@@ -24,7 +25,7 @@ namespace BankBL
         public User LoginUser(string mail, string password)
         {
             User user = db.Users.FirstOrDefault(x => x.Mail == mail);
-            if (user != null && user.Password == password) { return user; }
+            if (user != null && user.Password == HashData.Hashed_Password(password)) { return user; }
             return null;
         }
     }

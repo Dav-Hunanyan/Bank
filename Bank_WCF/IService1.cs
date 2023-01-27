@@ -6,11 +6,11 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace BankWCF
+namespace Bank_WCF
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
-    public interface IBank
+    public interface IService1
     {
         [OperationContract]
         void TransferMoney(int sender, int receiver, decimal money);
@@ -22,15 +22,14 @@ namespace BankWCF
         void RemoveMoney(int id, decimal money);
 
         [OperationContract]
-        void RegisterCustomer(Customer customer);
+        Customer RegisterCustomer(Customer customer);
         [OperationContract]
         void RegisterUser(User user);
         [OperationContract]
         User LoginUser(string mail, string password);
-
+        [OperationContract]
+        void CreatBankAccount(BankAccount account);
 
     }
 
-
 }
-

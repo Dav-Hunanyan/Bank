@@ -13,29 +13,28 @@ namespace BankBL
         public bool CustomerRegisterValid(Customer customer)
         {
             return MailValid(customer.Mail) && PhoneValid(customer.Phone)
-             && NameValid(customer.Name) && NameValid(customer.Surname)
-             && PassportValid(customer.PassportNumber) && DateValid(customer.Birthday);
+            && NameValid(customer.Name) && NameValid(customer.Surname);
         }
 
         public bool UserRegisterValid(User user)
         {
             return MailValid(user.Mail) && PhoneValid(user.Phone)
              && NameValid(user.Name) && NameValid(user.Surname)
-             && PasswordValid(user.Password) && DateValid(user.Birthday);
+             && PasswordValid(user.Password) ;
         }
 
         public bool BankAccountValid(BankAccount account)
         {
-            return DateValid(account.CreationDate);
+            return true;
         }
         private bool MailValid(string email)
         {
-            return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+            return Regex.IsMatch(email, @"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
         }
 
         private bool PhoneValid(string phone)
         {
-            return Regex.IsMatch(phone, @"^\+374\([1-9][0-9]\)[0-9]{3}\-[0-9]{3}");
+            return Regex.IsMatch(phone, @"^\+374[1-9][0-9]{7}");
         }
 
         private bool PasswordValid(string password)

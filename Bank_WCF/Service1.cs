@@ -1,5 +1,5 @@
-﻿using BankDAL;
-using BankBL;
+﻿using BankBL;
+using BankDAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +7,15 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace BankWCF
+namespace Bank_WCF
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
-    public class BankService : IBank
+    public class Service1 : IService1
     {
         CustomerBl customerBl;
         UserBl userBl;
         BankAccountBl accountBl;
-        public BankService()
+        public Service1()
         {
             userBl = new UserBl(new BankContext());
             accountBl = new BankAccountBl(new BankContext());
@@ -27,19 +27,24 @@ namespace BankWCF
             accountBl.AddMoney(id, money);
         }
 
+        public void CreatBankAccount(BankAccount account)
+        {
+            accountBl.CreateBankAccount(account);
+        }
+
         public User LoginUser(string mail, string password)
         {
             return userBl.LoginUser(mail, password);
         }
 
-        public void RegisterCustomer(Customer customer)
+        public Customer RegisterCustomer(Customer customer)
         {
-            customerBl.RegisterCustomer(customer);
+            return customerBl.RegisterCustomer(customer);
         }
 
         public void RegisterUser(User user)
         {
-            userBl.RegisterUser(user);
+             userBl.RegisterUser(user);
         }
 
         public void RemoveMoney(int id, decimal money)

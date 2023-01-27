@@ -11,13 +11,14 @@ namespace BankBL
     {
         public CustomerBl(BankContext db) : base(db) { }
 
-        public void RegisterCustomer(Customer customer)
+        public Customer RegisterCustomer(Customer customer)
         {
             if (validation.CustomerRegisterValid(customer))
             {
                 db.Customers.Add(customer);
                 db.SaveChanges();
             }
+            return customer;
 
         }
 

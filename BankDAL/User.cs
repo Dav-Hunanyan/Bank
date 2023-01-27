@@ -31,7 +31,7 @@ namespace BankDAL
         public string Phone { get; set; }
 
         [Required]
-        [StringLength(30)]
+        [StringLength(200)]
         public string Password { get; set; }
 
         [Required]
