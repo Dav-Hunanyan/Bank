@@ -27,9 +27,19 @@ namespace Bank_WCF
             accountBl.AddMoney(id, money);
         }
 
-        public void CreatBankAccount(BankAccount account)
+        public BankAccount CreatBankAccount(BankAccount account)
         {
-            accountBl.CreateBankAccount(account);
+           return accountBl.CreateBankAccount(account);
+        }
+
+        public BankAccount GetBankAccount(int id)
+        {
+           return accountBl.GetBankAccountId(id);
+        }
+
+        public Customer GetCustomer(int id)
+        {
+            return customerBl.GetCustomer(id);
         }
 
         public User LoginUser(string mail, string password)

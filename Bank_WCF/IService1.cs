@@ -28,7 +28,13 @@ namespace Bank_WCF
         [OperationContract]
         User LoginUser(string mail, string password);
         [OperationContract]
-        void CreatBankAccount(BankAccount account);
+        BankAccount CreatBankAccount(BankAccount account);
+
+        [OperationContract]
+        BankAccount GetBankAccount(int id);
+
+        [OperationContract]
+        Customer GetCustomer(int id);
 
     }
 

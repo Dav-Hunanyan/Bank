@@ -16,7 +16,7 @@ namespace BankBL
         {
             if (validation.UserRegisterValid(user))
             {
-                user.Password = HashData.Hashed_Password(user.Password);
+                user.Password = (HashData.Hashed_Password(user.Password)).ToString();
                 db.Users.Add(user);
                 db.SaveChanges();
             }

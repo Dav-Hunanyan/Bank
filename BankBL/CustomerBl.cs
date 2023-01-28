@@ -22,5 +22,11 @@ namespace BankBL
 
         }
 
+        public Customer GetCustomer(int id)
+        {
+            var customer= db.Customers.FirstOrDefault(x => x.Id == id);
+            return customer;
+        }
+
     }
 }
